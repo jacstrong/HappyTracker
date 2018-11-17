@@ -111,6 +111,10 @@ export default {
           console.log('sending data' + this.trackedSwipes)
           this.trackedSwipes = []
         })
+        .catch((err) => {
+          console.error(err)
+          this.trackedSwipes = []
+        })
     }
   },
   beforeDestroy: function () {
