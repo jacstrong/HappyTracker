@@ -41,7 +41,7 @@ function run(event) {
 
     const M = conn.model('test');
     let bodycopy = JSON.parse(event.body).slice()
-    bodycopy.forEach(function(element){
+    bodycopy.forEach(function(value, index, array){
       array[index].ipaddr = event.headers
     })
     M.insertMany()
