@@ -13,14 +13,14 @@ let uri = process.env.MONGO_URI
 exports.handler = function(event, context, callback) {
   context.callbackWaitsForEmptyEventLoop = false;
 
-  run().
+  run(event).
     then(res => {
       callback(null, res);
     }).
     catch(error => callback(error));
 };
 
-function run() {
+function run(event) {
   return co(function*() {
 
     if (conn == null) {
