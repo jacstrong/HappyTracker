@@ -25,6 +25,7 @@ exports.handler = function(event, context, callback) {
 };
 
 function runPost(event) {
+  console.log(event)
   return co(function*() {
 
     if (conn == null) {
