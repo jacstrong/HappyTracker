@@ -29,13 +29,15 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   props: ['username'],
   data: () => ({
     hasGeolocation: true,
     swipeDirection: 'None',
     trackedSwipes: [],
-    username: '',
+    username1: '',
     lng: '',
     lat: ''
   }),
@@ -46,6 +48,7 @@ export default {
     } else {
       this.hasGeolocation = false
     }
+    this.username1 = this.$store.state.username
     console.log(this.username)
   },
   methods: {
@@ -70,17 +73,17 @@ export default {
       this.addSwipeToList('Y')
     },
     addSwipeToList (direction) {
-      let temp = [{
+      let temp = {
         name: this.username,
         action: direction,
         lng: this.lng,
         lat: this.lat,
         time: this.printDate()
-      }]
+      }
       this.trackedSwipes.push(temp)
       console.log(this.trackedSwipes)
       if (this.trackedSwipes.length >= 10) {
-        sendData()
+        this.sendData()
       }
     },
     geoSuccess (position) {
@@ -99,7 +102,11 @@ export default {
       return (dateStr)
     },
     sendData () {
-
+      axios.post(URL)
+        .then(() => {
+          console.log('sending data' + this.trackedSwipes)
+          this.trackedSwipes = []
+        })
     }
   }
 }
