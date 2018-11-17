@@ -79,9 +79,15 @@ function runGet(event) {
 
     const doc = yield M.find({},
       { _id: 0, ipaddr: 0, time: 0, __v: 0 })
+    var ret = []
+    for (var i = 0, len = doc.length; i < len; i++) {
+      if (i % 3 === 0 ) {
+        ret.push(doc[i]);
+      }
+    }
     const response = {
       statusCode: 200,
-      body: JSON.stringify(doc)
+      body: JSON.stringify(ret)
     };
     return response
   });
