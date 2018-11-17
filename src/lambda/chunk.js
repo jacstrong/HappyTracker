@@ -40,8 +40,11 @@ function run(event) {
     }
 
     const M = conn.model('test');
-
-    M.insertMany(JSON.parse(event.body))
+    let bodycopy = JSON.parse(event.body).slice()
+    bodycopy.forEach(function(element){
+      array[index].ipaddr = event.headers
+    })
+    M.insertMany()
 
     const doc = yield M.find();
     const response = {
