@@ -84,7 +84,8 @@ export default {
       items: [
         { title: 'Home', icon: 'home', route: '/' },
         { title: 'About', icon: 'flare', route: 'about' },
-        { title: 'Tracker', icon: 'gamepad', route: 'track' }
+        { title: 'Tracker', icon: 'tag_faces', route: 'track' },
+        { title: 'Results', icon: 'explore', route: 'results' }
       ],
       mini: true,
       right: true,

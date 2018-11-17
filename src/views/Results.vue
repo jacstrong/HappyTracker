@@ -1,18 +1,5 @@
 <template>
   <v-container>
-    <v-parallax
-      dark
-      src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg"
-    >
-      <v-layout
-        align-center
-        column
-        justify-center
-      >
-        <h1 class="display-2 font-weight-thin mb-3">HAPPY<span class="font-weight-light">TRACKER</span></h1>
-        <h4 class="subheading">Build your application today!</h4>
-      </v-layout>
-    </v-parallax>
     <v-layout
       text-xs-center
       wrap
@@ -28,12 +15,10 @@
 
       <v-flex mb-4>
         <h1 class="display-2 font-weight-bold mb-3">
-          Welcome to Vuetify
+          Welcome to the Happy Tracker.
         </h1>
         <p class="subheading font-weight-regular">
-          For help and collaboration with other Vuetify developers,
-          <br>please join our online
-          <a href="https://community.vuetifyjs.com" target="_blank">Discord Community</a>
+          Happy tracker is a website dedicated to making the world a happier place.
         </p>
       </v-flex>
 
@@ -41,7 +26,7 @@
         mb-5
         xs12
       >
-        <h2 class="headline font-weight-bold mb-3">What's next?</h2>
+        <h2 class="headline font-weight-bold mb-3">How it works</h2>
 
         <v-layout justify-center>
           <a
