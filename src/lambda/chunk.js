@@ -12,7 +12,7 @@ let uri = process.env.MONGO_URI
 
 exports.handler = function(event, context, callback) {
   context.callbackWaitsForEmptyEventLoop = false;
-  console.log(event.body)
+  console.log(event.headers)
 
   run(event).
     then(res => {
@@ -44,7 +44,7 @@ function run(event) {
     bodycopy.forEach(function(value, index, array){
       array[index].ipaddr = JSON.stringify(event.headers)
     })
-    M.insertMany()
+    M.insertMany(bodycopy)
 
     const doc = yield M.find();
     const response = {
