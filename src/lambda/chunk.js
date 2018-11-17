@@ -12,6 +12,7 @@ let uri = process.env.MONGO_URI
 
 exports.handler = function(event, context, callback) {
   context.callbackWaitsForEmptyEventLoop = false;
+  console.log(event.body)
 
   run(event).
     then(res => {
@@ -35,18 +36,12 @@ function run(event) {
         name: String,
         time: String,
         ipaddr: String
-        // schedule: String,
-        // occupancy: Number,
-        // count: Number,
-        // price: Number,
-        // time: String,
-        // link: String
       }));
     }
 
     const M = conn.model('test');
 
-    M.insertMany(event.body)
+    M.insertMany(JSON.parse(event.body))
 
     const doc = yield M.find();
     const response = {
