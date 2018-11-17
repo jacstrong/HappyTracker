@@ -1,6 +1,7 @@
 <template>
 <v-layout row justify-center>
-  <swipe-box :username="username" />
+  <swipe-box :username="username" v-model="geo" />
+
     <v-dialog v-model="usernameDialog" persistent max-width="600px">
       <v-card>
         <v-card-title>
@@ -32,6 +33,39 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
+
+    <v-dialog
+      v-model="geo"
+      width="500"
+    >
+
+      <v-card>
+        <v-card-title
+          class="headline grey lighten-2"
+          primary-title
+        >
+          Warning
+        </v-card-title>
+
+        <v-card-text>
+          Happy Tracker needs your location to gather accurate data. Please enable geolocation or use a different browser
+        </v-card-text>
+
+        <v-divider></v-divider>
+
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn
+            color="primary"
+            flat
+            @click="geo = false"
+          >
+            Close
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+
   </v-layout>
 </template>
 
@@ -45,7 +79,8 @@ export default {
   data () {
     return {
       usernameDialog: false,
-      username: ''
+      username: '',
+      geo: false
     }
   },
   created: function () {

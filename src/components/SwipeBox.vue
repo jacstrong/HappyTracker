@@ -32,7 +32,7 @@
 import axios from 'axios'
 
 export default {
-  props: ['username'],
+  props: ['username', 'value'],
   data: () => ({
     backgroundClass: 'grey lighten-2',
     hasGeolocation: true,
@@ -79,17 +79,21 @@ export default {
       console.log(this.backgroundClass)
     },
     addSwipeToList (direction) {
-      let temp = {
-        name: this.username,
-        action: direction,
-        lng: this.lng,
-        lat: this.lat,
-        time: this.printDate()
-      }
-      this.trackedSwipes.push(temp)
-      console.log(this.trackedSwipes)
-      if (this.trackedSwipes.length >= 10) {
-        this.sendData()
+      if (this.lng !== '') {
+        let temp = {
+          name: this.username,
+          action: direction,
+          lng: this.lng,
+          lat: this.lat,
+          time: this.printDate()
+        }
+        this.trackedSwipes.push(temp)
+        console.log(this.trackedSwipes)
+        if (this.trackedSwipes.length >= 10) {
+          this.sendData()
+        }
+      } else {
+        this.$emit('input', true)
       }
     },
     geoSuccess (position) {

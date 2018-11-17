@@ -87,7 +87,7 @@ export default {
         { title: 'Tracker', icon: 'tag_faces', route: 'track' },
         { title: 'Results', icon: 'explore', route: 'results' }
       ],
-      mini: true,
+      mini: false,
       right: true,
       avatarNum: '85',
       avatarGen: 'men',
