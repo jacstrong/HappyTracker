@@ -72,7 +72,7 @@ export default {
     const element = document.getElementById('map_canvas')
     const options = {
       zoom: 14,
-      center: new google.maps.LatLng(37.775, -122.434),
+      center: new google.maps.LatLng(41.7406976, -111.8150656),
       mapTypeId: 'satellite'
     }
 
