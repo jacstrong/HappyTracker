@@ -4,11 +4,16 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build:client": "vue-cli-service build",
+    "build:server": "netlify-lambda build src/lambda",
+    "serve:server": "netlify-lambda serve src/lambda",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "co": "^4.6.0",
     "js-cookie": "^2.2.0",
+    "mongoose": "^5.3.12",
+    "netlify-lambda": "^1.0.3",
     "vue": "^2.5.17",
     "vue-google-maps": "^0.1.21",
     "vue-router": "^3.0.1",

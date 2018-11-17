@@ -1,0 +1,12 @@
+[build]
+functions = "lambda"
+command = "npm run build:client && npm run build:server"
+[[redirects]]
+from = "/track"
+to = "/"
+[[redirects]]
+from = "/about"
+to = "/"
+[[redirects]]
+from = "/results"
+to = "/"

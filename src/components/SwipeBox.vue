@@ -4,8 +4,7 @@
     v-touch="{
       left: () => swipeLeft('Not Happy'),
       right: () => swipeRight('Happy'),
-      up: () => swipeUp('You Made Someone Happy!'),
-      down: () => swipeDown('Down')
+      up: () => swipeUp('You Made Someone Happy!')
     }"
     column
     align-center
@@ -58,25 +57,24 @@ export default {
       this.swipeDirection = direction
       this.addSwipeToList('S')
       this.backgroundClass = 'red lighten-2'
+      setTimeout(() => { this.backgroundClass = 'red lighten-3' }, 150)
+      setTimeout(() => { this.backgroundClass = 'grey lighten-2' }, 300)
     },
     swipeRight (direction) {
       navigator.geolocation.getCurrentPosition(this.geoSuccess)
       this.swipeDirection = direction
       this.addSwipeToList('H')
       this.backgroundClass = 'blue lighten-2'
+      setTimeout(() => { this.backgroundClass = 'blue lighten-3' }, 150)
+      setTimeout(() => { this.backgroundClass = 'grey lighten-2' }, 300)
     },
     swipeUp (direction) {
       navigator.geolocation.getCurrentPosition(this.geoSuccess)
       this.swipeDirection = direction
       this.addSwipeToList('M')
       this.backgroundClass = 'green lighten-2'
-    },
-    swipeDown (direction) {
-      navigator.geolocation.getCurrentPosition(this.geoSuccess)
-      this.swipeDirection = direction
-      this.addSwipeToList('Y')
-      this.backgroundClass = 'yellow lighten-2'
-      console.log(this.backgroundClass)
+      setTimeout(() => { this.backgroundClass = 'green lighten-3' }, 150)
+      setTimeout(() => { this.backgroundClass = 'grey lighten-2' }, 300)
     },
     addSwipeToList (direction) {
       if (this.lng !== '') {

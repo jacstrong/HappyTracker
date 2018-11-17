@@ -13,9 +13,9 @@
         <h4 class="subheading">See where people are most happy!</h4>
         <v-btn
           class="ma-4"
-          @click="nav('/track')"
+          @click="nav('/about')"
         >
-          Start Now
+          Let's go!
         </v-btn>
       </v-layout>
     </v-parallax>
