@@ -1,6 +1,12 @@
 [build]
 functions = "lambda"
 command = "npm run build:client && npm run build:server"
-/track /#/track
-/about /#/about
-/results /#/results
+[[redirects]]
+from = "/track"
+to = "/#/track"
+[[redirects]]
+from = "/about"
+to = "/#/about"
+[[redirects]]
+from = "/results"
+to = "/#/results"
