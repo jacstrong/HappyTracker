@@ -1,26 +1,30 @@
 var co = require('co');
 var mongoose = require('mongoose');
 
-// import mongoose from 'mongoose'
-// import co from 'co'
-
 let conn = null;
-
-// let uri = `mongodb://${process.env.mdb_username}:${process.env.mdb_password}@${process.env.mongourl}:${process.env.mdb_port}/${process.env.mdb_databaseName}`;
 
 let uri = process.env.MONGO_URI
 
 exports.handler = function(event, context, callback) {
   context.callbackWaitsForEmptyEventLoop = false;
 
-  run(event).
-    then(res => {
-      callback(null, res);
-    }).
-    catch(error => callback(error));
+  if (event.httpMethod === 'POST') {
+    runPost(event).
+      then(res => {
+        callback(null, res);
+      }).
+      catch(error => callback(error));
+  } else {
+    runGet(event).
+      then(res => {
+        callback(null, res);
+      }).
+      catch(error => callback(error));
+  }
+
 };
 
-function run(event) {
+function runPost(event) {
   return co(function*() {
 
     if (conn == null) {
@@ -45,11 +49,35 @@ function run(event) {
     })
     M.insertMany(bodycopy)
 
-    const doc = yield M.find();
     const response = {
       statusCode: 200
-      // statusCode: 200,
-      // body: JSON.stringify(bodycopy)
+    };
+    return response;
+  });
+}
+
+function runGet(event) {
+  return co(function*() {
+
+    if (conn == null) {
+      conn = yield mongoose.createConnection(uri, {
+        bufferCommands: false,
+        bufferMaxEntries: 0
+      });
+      conn.model('test', new mongoose.Schema({
+        action: String,
+        lat: Number,
+        lng: Number,
+        name: String,
+      }));
+    }
+
+    const M = conn.model('test');
+
+    const doc = yield M.find();
+    const response = {
+      statusCode: 200,
+      body: JSON.stringify(doc)
     };
     return response;
   });
