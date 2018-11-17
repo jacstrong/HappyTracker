@@ -94,8 +94,6 @@ export default {
       avatarLoaded: false
     }
   },
-  beforeMount: {
-  },
   methods: {
     nav (url) {
       router.push(url)

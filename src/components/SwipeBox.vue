@@ -1,10 +1,10 @@
 <template>
   <v-layout
-    v-if="hasGeolocation"
+    v-if="true"
     v-touch="{
-      left: () => console.log('tracking man'),
-      right: () => swipeRight('Right'),
-      up: () => swipeUp('Up'),
+      left: () => swipeLeft('Not Happy'),
+      right: () => swipeRight('Happy'),
+      up: () => swipeUp('You Made Someone Happy!'),
       down: () => swipeDown('Down')
     }"
     column
@@ -30,23 +30,23 @@
 
 <script>
 export default {
+  props: ['username'],
   data: () => ({
     hasGeolocation: true,
     swipeDirection: 'None',
     trackedSwipes: [],
-    username: 'NULL NAME',
+    username: '',
     lng: '',
     lat: ''
   }),
-  created: {
-    onload () {
-      navigator.geolocation.getCurrentPosition()
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(this.geoSuccess)
-      } else {
-        this.hasGeolocation = false
-      }
+  created: function () {
+    // navigator.geolocation.getCurrentPosition()
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(this.geoSuccess)
+    } else {
+      this.hasGeolocation = false
     }
+    console.log(this.username)
   },
   methods: {
     swipeLeft (direction) {
@@ -70,17 +70,24 @@ export default {
       this.addSwipeToList('Y')
     },
     addSwipeToList (direction) {
-      this.trackedSwipes.push({
+      let temp = [{
         name: this.username,
         action: direction,
         lng: this.lng,
         lat: this.lat,
         time: this.printDate()
-      })
+      }]
+      this.trackedSwipes.push(temp)
+      console.log(this.trackedSwipes)
+      if (this.trackedSwipes.length >= 10) {
+        sendData()
+      }
     },
     geoSuccess (position) {
       this.lat = position.coords.latitude
       this.lng = position.coords.longitude
+      console.log(this.lat)
+      console.log(this.lng)
     },
     printDate () {
       let temp = new Date()
@@ -90,6 +97,9 @@ export default {
                     temp.getHours().toString() +
                     temp.getMinutes().toString()
       return (dateStr)
+    },
+    sendData () {
+
     }
   }
 }
