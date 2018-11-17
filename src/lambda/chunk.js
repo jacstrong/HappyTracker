@@ -7,7 +7,7 @@ var mongoose = require('mongoose');
 let conn = null;
 
 const uri = `mongodb://${process.env.mdb_username}:${process.env.mdb_password}@${process.env.mongourl}:${process.env.mdb_port}/${process.env.mdb_databaseName}`;
-
+console.log(uri);
 exports.handler = function(event, context, callback) {
 
   context.callbackWaitsForEmptyEventLoop = false;
