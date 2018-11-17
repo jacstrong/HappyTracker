@@ -6,7 +6,7 @@ var mongoose = require('mongoose');
 
 let conn = null;
 
-const uri = `mongodb://${process.env.mdb_username}:${process.env.mdb_password}@${process.env.mongourl}:${process.env.mdb_port}/${process.env.mdb_databaseName}`;
+const uri = `mongodb://${process.env.mdb_username}:${process.env.mdb_password}@${process.env.mongourl}:${process.env.mdb_port}/${process.env.mdb_databaseName}?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true`;
 exports.handler = function(event, context, callback) {
 
   console.log(uri);

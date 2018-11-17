@@ -6,6 +6,7 @@
     "serve": "vue-cli-service serve",
     "build:client": "vue-cli-service build",
     "build:server": "netlify-lambda build src/lambda",
+    "serve:server": "netlify-lambda serve src/lambda",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
