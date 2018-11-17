@@ -131,7 +131,7 @@ export default {
       this.returnData.forEach((coord) => {
         if (coord.action === 'S') {
           const position = new google.maps.LatLng(coord.lat, coord.lng)
-          this.points.push(position)
+          this.pointsS.push(position)
         }
       })
       return this.pointsS
@@ -140,7 +140,7 @@ export default {
       this.returnData.forEach((coord) => {
         if (coord.action === 'H') {
           const position = new google.maps.LatLng(coord.lat, coord.lng)
-          this.points.push(position)
+          this.pointsH.push(position)
         }
       })
       return this.pointsH
