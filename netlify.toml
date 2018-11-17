@@ -3,10 +3,10 @@ functions = "lambda"
 command = "npm run build:client && npm run build:server"
 [[redirects]]
 from = "/track"
-to = "/#/track"
+to = "/"
 [[redirects]]
 from = "/about"
-to = "/#/about"
+to = "/"
 [[redirects]]
 from = "/results"
-to = "/#/results"
+to = "/"

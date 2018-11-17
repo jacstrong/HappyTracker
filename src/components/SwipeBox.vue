@@ -4,8 +4,7 @@
     v-touch="{
       left: () => swipeLeft('Not Happy'),
       right: () => swipeRight('Happy'),
-      up: () => swipeUp('You Made Someone Happy!'),
-      down: () => swipeDown('Down')
+      up: () => swipeUp('You Made Someone Happy!')
     }"
     column
     align-center
@@ -70,13 +69,6 @@ export default {
       this.swipeDirection = direction
       this.addSwipeToList('M')
       this.backgroundClass = 'green lighten-2'
-    },
-    swipeDown (direction) {
-      navigator.geolocation.getCurrentPosition(this.geoSuccess)
-      this.swipeDirection = direction
-      this.addSwipeToList('Y')
-      this.backgroundClass = 'yellow lighten-2'
-      console.log(this.backgroundClass)
     },
     addSwipeToList (direction) {
       if (this.lng !== '') {
