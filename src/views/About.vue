@@ -54,25 +54,6 @@
         xs12
         mb-5
       >
-        <h2 class="headline font-weight-bold mb-3">Important Links</h2>
-
-        <v-layout justify-center>
-          <a
-            v-for="(link, i) in importantLinks"
-            :key="i"
-            :href="link.href"
-            class="subheading mx-3"
-            target="_blank"
-          >
-            {{ link.text }}
-          </a>
-        </v-layout>
-      </v-flex>
-
-      <v-flex
-        xs12
-        mb-5
-      >
         <h2 class="headline font-weight-bold mb-3">FYI</h2>
 
         <v-layout justify-center>
@@ -82,6 +63,7 @@
               <v-list>
                 <v-list-tile>Record your loction</v-list-tile>
                 <v-list-tile>Record your IP</v-list-tile>
+                <v-list-tile>Use cookies</v-list-tile>
                 <v-list-tile>Laugh with you when people walk into stuff while on their phones</v-list-tile>
                 <v-list-tile>Will not bother to remove your data</v-list-tile>
               </v-list>
