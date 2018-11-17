@@ -45,8 +45,7 @@ export default {
   methods: {
     usernameSave () {
       this.usernameDialog = false
-      // TODO: GET THE STORE WORKING AND SAVE THE USERNAME
-
+      this.$store.commit('newUsername', this.username)
     }
   }
 }

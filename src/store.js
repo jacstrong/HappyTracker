@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    username: 'Jacob'
+    username: ''
   },
   mutations: {
     stateUsername (newUsername) {

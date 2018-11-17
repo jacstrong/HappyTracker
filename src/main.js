@@ -6,6 +6,7 @@ import router from './router'
 import store from './store'
 import Vuetify from 'vuetify'
 import axios from 'axios'
+import Cookies from 'js-cookie'
 
 Vue.config.productionTip = false
 
@@ -15,6 +16,7 @@ Vue.use(Vuetify, {
 })
 
 Vue.prototype.$http = axios
+Vue.prototype.$cookies = Cookies
 
 new Vue({
   router,

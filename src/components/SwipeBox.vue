@@ -102,12 +102,15 @@ export default {
       return (dateStr)
     },
     sendData () {
-      axios.post(URL)
+      axios.post('/.netlify/functions/chunk')
         .then(() => {
           console.log('sending data' + this.trackedSwipes)
           this.trackedSwipes = []
         })
     }
+  },
+  beforeDestroy: function () {
+
   }
 }
 </script>
