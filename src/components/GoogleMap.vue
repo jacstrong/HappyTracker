@@ -69,7 +69,7 @@ export default {
     showPersonal: false,
     pointsS: [],
     pointsH: [],
-    returnData: {},
+    returnData: [],
     map: {},
     heatmap: {},
     heatmap2: {}
