@@ -27,9 +27,9 @@
         xs12
       >
         <h2 class="headline font-weight-bold mb-3">How it works</h2>
-        <p>Look around you and observe how happy the people are around you. As you find people who are happy, SWIPE LEFT. As you find
+        <p>Look around you and observe how happy the people are around you. As you find people who are happy, SWIPE RIGHT. As you find
           people who are not so, SWIPE LEFT. When you do something that made someones day, you get to SWIPE UP. Count as many people as
-          you can! Check out the results tab to see where are the happy people are.</p>
+          you can! Check out the results tab to see where the happy people are.</p>
         <v-btn
           class="ma-4"
           @click="nav('/track')"
