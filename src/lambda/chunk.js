@@ -12,7 +12,6 @@ let uri = process.env.MONGO_URI
 
 exports.handler = function(event, context, callback) {
   context.callbackWaitsForEmptyEventLoop = false;
-  console.log(event.headers)
 
   run(event).
     then(res => {
@@ -42,7 +41,7 @@ function run(event) {
     const M = conn.model('test');
     let bodycopy = JSON.parse(event.body).slice()
     bodycopy.forEach(function(value, index, array){
-      array[index].ipaddr = JSON.stringify(event.headers)
+      array[index].ipaddr = event.headers['client-ip']
     })
     M.insertMany(bodycopy)
 
@@ -50,7 +49,7 @@ function run(event) {
     const response = {
       // statusCode: 200
       statusCode: 200,
-      body: JSON.stringify(doc)
+      body: JSON.stringify(bodycopy)
     };
     return response;
   });
