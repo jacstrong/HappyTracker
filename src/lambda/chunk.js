@@ -74,13 +74,14 @@ function runGet(event) {
       }));
     }
 
-    const M = conn.model('test');
+    const M = conn.model('test')
 
-    const doc = yield M.find();
+    const doc = yield M.find({},
+      { _id: 0, name: 1, action: 1, lng: 1, lat: 1, ipaddr: 0, time: 0, __v: 0 })
     const response = {
       statusCode: 200,
       body: JSON.stringify(doc)
     };
-    return response;
+    return response
   });
 }
