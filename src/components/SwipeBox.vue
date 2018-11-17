@@ -106,7 +106,7 @@ export default {
       return (dateStr)
     },
     sendData () {
-      axios.post('/.netlify/functions/chunk')
+      axios.post('/.netlify/functions/chunk', this.trackedSwipes)
         .then(() => {
           console.log('sending data' + this.trackedSwipes)
           this.trackedSwipes = []
