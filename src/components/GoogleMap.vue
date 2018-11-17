@@ -55,29 +55,95 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   components: {
-
+    axios
   },
   data: () => ({
     name: 'GoogleMap',
     // props: ['name'],
     mapName: 'heat' + '-map',
     radioGroup: 1,
-    showPersonal: false
+    showPersonal: false,
+    pointsS: [],
+    pointsH: [],
+    returnData: {},
+    map: {},
+    heatmap: {},
+    heatmap2: {}
   }),
+  created: function () {
+    axios.get('/.netlify/functions/chunk')
+      .then(res => {
+        this.returnData = res.data
+        this.initHeatmap()
+      }).catch(err => {
+        console.error(err)
+      })
+  },
   mounted: function () {
     const element = document.getElementById('map_canvas')
     const options = {
       zoom: 14,
-      center: new google.maps.LatLng(41.7406976, -111.8150656)
+      center: new google.maps.LatLng(41.7406976, -111.8150656),
+      mapTypeId: 'satellite'
     }
 
-    const map = new google.maps.Map(element, options)
+    this.map = new google.maps.Map(element, options)
+    console.log(1)
+    this.initHeatmap()
   },
   methods: {
     submitHandler () {
 
+    },
+    initHeatmap () {
+      this.heatmap = new google.maps.visualization.HeatmapLayer({
+        data: this.getPoints(),
+        map: this.map
+      })
+      this.heatmap2 = new google.maps.visualization.HeatmapLayer({
+        data: this.getPoints2(),
+        map: this.map
+      })
+      // this.heatmap.setMap(this.heatmap.getMap() ? null : this.map)
+      var gradient = [
+        'rgba(0, 255, 255, 0)',
+        'rgba(0, 255, 255, 1)',
+        'rgba(0, 191, 255, 1)',
+        'rgba(0, 127, 255, 1)',
+        'rgba(0, 63, 255, 1)',
+        'rgba(0, 0, 255, 1)',
+        'rgba(0, 0, 223, 1)',
+        'rgba(0, 0, 191, 1)',
+        'rgba(0, 0, 159, 1)',
+        'rgba(0, 0, 127, 1)',
+        'rgba(63, 0, 91, 1)',
+        'rgba(127, 0, 63, 1)',
+        'rgba(191, 0, 31, 1)',
+        'rgba(255, 0, 0, 1)'
+      ]
+      this.heatmap.set('gradient', this.heatmap.get('gradient') ? null : gradient)
+    },
+    getPoints () {
+      this.returnData.forEach((coord) => {
+        if (coord.action === 'S') {
+          const position = new google.maps.LatLng(coord.lat, coord.lng)
+          this.points.push(position)
+        }
+      })
+      return this.pointsS
+    },
+    getPoints2 () {
+      this.returnData.forEach((coord) => {
+        if (coord.action === 'H') {
+          const position = new google.maps.LatLng(coord.lat, coord.lng)
+          this.points.push(position)
+        }
+      })
+      return this.pointsH
     }
   }
 }

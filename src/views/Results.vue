@@ -23,6 +23,7 @@ export default {
     GoogleMap
   },
   data: () => ({
+    points: {}
   })
 }
 </script>
