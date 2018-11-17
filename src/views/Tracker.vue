@@ -4,17 +4,23 @@
     <v-dialog v-model="usernameDialog" persistent max-width="600px">
       <v-card>
         <v-card-title>
-          <span class="headline">Choose a username</span>
+          <span class="headline">Choose a Username</span>
         </v-card-title>
         <v-card-text>
           <v-container grid-list-md>
             <v-layout wrap>
-              <v-flex xs12 sm6 md4>
+              <v-flex xs12 sm12 md12>
                 <v-text-field
                   label="Username"
                   v-model="username"
+                  width="100%"
                   required
-                  box
+                  outline
+                  :rules="[
+                    () => !!username || 'This field is required',
+                    () => !!username && username.length <= 25 || 'Address must be less than 25 characters',
+                  ]"
+                  counter="25"
                 ></v-text-field>
               </v-flex>
             </v-layout>
@@ -38,13 +44,21 @@ export default {
   },
   data () {
     return {
-      usernameDialog: true,
+      usernameDialog: false,
       username: ''
+    }
+  },
+  created: function () {
+    this.username = this.$store.state.username
+    if (this.$store.state.username === '') {
+      this.usernameDialog = true
     }
   },
   methods: {
     usernameSave () {
-      this.usernameDialog = false
+      if (this.username !== '') {
+        this.usernameDialog = false
+      }
       this.$store.commit('newUsername', this.username)
     }
   }

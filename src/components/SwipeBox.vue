@@ -11,7 +11,7 @@
     align-center
     justify-center
     style="height: 500px"
-    class="grey lighten-2"
+    v-bind:class="backgroundClass"
   >
     <v-subheader>Swipe Direction</v-subheader>
     {{ swipeDirection }}
@@ -34,6 +34,7 @@ import axios from 'axios'
 export default {
   props: ['username'],
   data: () => ({
+    backgroundClass: 'grey lighten-2',
     hasGeolocation: true,
     swipeDirection: 'None',
     trackedSwipes: [],
@@ -56,21 +57,26 @@ export default {
       navigator.geolocation.getCurrentPosition(this.geoSuccess)
       this.swipeDirection = direction
       this.addSwipeToList('S')
+      this.backgroundClass = 'red lighten-2'
     },
     swipeRight (direction) {
       navigator.geolocation.getCurrentPosition(this.geoSuccess)
       this.swipeDirection = direction
       this.addSwipeToList('H')
+      this.backgroundClass = 'blue lighten-2'
     },
     swipeUp (direction) {
       navigator.geolocation.getCurrentPosition(this.geoSuccess)
       this.swipeDirection = direction
       this.addSwipeToList('M')
+      this.backgroundClass = 'green lighten-2'
     },
     swipeDown (direction) {
       navigator.geolocation.getCurrentPosition(this.geoSuccess)
       this.swipeDirection = direction
       this.addSwipeToList('Y')
+      this.backgroundClass = 'yellow lighten-2'
+      console.log(this.backgroundClass)
     },
     addSwipeToList (direction) {
       let temp = {
@@ -89,8 +95,6 @@ export default {
     geoSuccess (position) {
       this.lat = position.coords.latitude
       this.lng = position.coords.longitude
-      console.log(this.lat)
-      console.log(this.lng)
     },
     printDate () {
       let temp = new Date()
@@ -114,3 +118,13 @@ export default {
   }
 }
 </script>
+
+<style>
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.25s ease-out;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+</style>
