@@ -44,13 +44,12 @@ function run(event) {
       array[index].ipaddr = event.headers['client-ip']
     })
     M.insertMany(bodycopy)
-    M.insertMany(JSON.parse(event.body))
 
     const doc = yield M.find();
     const response = {
-      // statusCode: 200
-      statusCode: 200,
-      body: JSON.stringify(bodycopy)
+      statusCode: 200
+      // statusCode: 200,
+      // body: JSON.stringify(bodycopy)
     };
     return response;
   });
