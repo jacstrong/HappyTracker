@@ -90,9 +90,9 @@ function run() {
 
     const doc = yield M.find();
     const response = {
-      statusCode: 200
-      // statusCode: 200,
-      // body: JSON.stringify(doc)
+      // statusCode: 200
+      statusCode: 200,
+      body: JSON.stringify(doc)
     };
     return response;
   });
