@@ -46,48 +46,7 @@ function run() {
 
     const M = conn.model('test');
 
-    M.insertMany([
-      {
-        action: 'H',
-        lat: 123,
-        lng: 321,
-        name: 'String',
-        time: '2345678',
-        ipaddr: '12.12.12.12'
-      },
-      {
-        action: 'H',
-        lat: 123,
-        lng: 321,
-        name: 'String',
-        time: '2345678',
-        ipaddr: '12.12.12.12'
-      },
-      {
-        action: 'H',
-        lat: 123,
-        lng: 321,
-        name: 'String',
-        time: '2345678',
-        ipaddr: '12.12.12.12'
-      },
-      {
-        action: 'H',
-        lat: 123,
-        lng: 321,
-        name: 'String',
-        time: '2345678',
-        ipaddr: '12.12.12.12'
-      },
-      {
-        action: 'H',
-        lat: 123,
-        lng: 321,
-        name: 'String',
-        time: '2345678',
-        ipaddr: '12.12.12.12'
-      }
-    ])
+    M.insertMany(event.body)
 
     const doc = yield M.find();
     const response = {
