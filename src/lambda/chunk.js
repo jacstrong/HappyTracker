@@ -69,6 +69,8 @@ function runGet(event) {
         lat: Number,
         lng: Number,
         name: String,
+        time: String,
+        ipaddr: String
       }));
     }
 
