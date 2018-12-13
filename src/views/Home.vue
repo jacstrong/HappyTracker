@@ -91,7 +91,7 @@
       >
         <h3 class="subheading font-weight-bold">&#169;2018 - Jacob Strong & Skyler Cowley -- <a href="https://github.com/jacstrong/HappyTracker">GitHub</a></h3>
       </v-flex>
-    </v-layout>
+    </v-layout> -->
   </div>
 </template>
 

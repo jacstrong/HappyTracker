@@ -56,25 +56,31 @@ export default {
       navigator.geolocation.getCurrentPosition(this.geoSuccess)
       this.swipeDirection = direction
       this.addSwipeToList('S')
+      navigator.vibrate(200)
       this.backgroundClass = 'red lighten-2'
-      setTimeout(() => { this.backgroundClass = 'red lighten-3' }, 150)
-      setTimeout(() => { this.backgroundClass = 'grey lighten-2' }, 300)
+      setTimeout(() => { this.backgroundClass = 'red lighten-3' }, 100)
+      setTimeout(() => { this.backgroundClass = 'red lighten-4' }, 300)
+      setTimeout(() => { this.backgroundClass = 'grey lighten-2'; this.swipeDirection = '' }, 500)
     },
     swipeRight (direction) {
       navigator.geolocation.getCurrentPosition(this.geoSuccess)
       this.swipeDirection = direction
       this.addSwipeToList('H')
+      navigator.vibrate(200)
       this.backgroundClass = 'blue lighten-2'
-      setTimeout(() => { this.backgroundClass = 'blue lighten-3' }, 150)
-      setTimeout(() => { this.backgroundClass = 'grey lighten-2' }, 300)
+      setTimeout(() => { this.backgroundClass = 'blue lighten-3' }, 100)
+      setTimeout(() => { this.backgroundClass = 'blue lighten-4' }, 300)
+      setTimeout(() => { this.backgroundClass = 'grey lighten-2'; this.swipeDirection = '' }, 500)
     },
     swipeUp (direction) {
       navigator.geolocation.getCurrentPosition(this.geoSuccess)
       this.swipeDirection = direction
       this.addSwipeToList('M')
+      navigator.vibrate(200)
       this.backgroundClass = 'green lighten-2'
-      setTimeout(() => { this.backgroundClass = 'green lighten-3' }, 150)
-      setTimeout(() => { this.backgroundClass = 'grey lighten-2' }, 300)
+      setTimeout(() => { this.backgroundClass = 'green lighten-3' }, 100)
+      setTimeout(() => { this.backgroundClass = 'green lighten-4' }, 300)
+      setTimeout(() => { this.backgroundClass = 'grey lighten-2'; this.swipeDirection = '' }, 500)
     },
     addSwipeToList (direction) {
       if (this.lng !== '') {

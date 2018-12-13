@@ -66,6 +66,29 @@
       </v-card>
     </v-dialog>
 
+    <v-dialog v-if="!usernameDialog" :value="dirDialog" fullscreen>
+      <v-card color="rgba(0,0,0,0.75)" @click.once="dirDialog = false">
+        <v-btn style="left:calc(50vw - 36px)" color="green lighten-3" fab large absolute depressed>
+          <v-icon>keyboard_arrow_up</v-icon>
+        </v-btn>
+        <v-btn style="top:calc(50vh - 36px)" color="red lighten-3" left fab large absolute depressed>
+          <v-icon>keyboard_arrow_left</v-icon>
+        </v-btn>
+        <v-btn style="top:calc(50vh - 36px)" color="blue lighten-3" right fab large absolute depressed>
+          <v-icon>keyboard_arrow_right</v-icon>
+        </v-btn>
+        <v-btn style="left:calc(50vw - 77px); top:60px" color="green lighten-3" class="px-1" large absolute depressed>
+          Made Someones Day
+        </v-btn>
+        <v-btn style="top:calc(50vh - 24px); left:55px" color="red lighten-3" class="pr-1" left large absolute depressed>
+          Not Happy
+        </v-btn>
+        <v-btn style="top:calc(50vh - 24px); right:60x" color="blue lighten-3" class="pl-1" right large absolute depressed>
+          Happy
+        </v-btn>
+      </v-card>
+    </v-dialog>
+
   </v-layout>
 </template>
 
@@ -80,7 +103,8 @@ export default {
     return {
       usernameDialog: false,
       username: '',
-      geo: false
+      geo: false,
+      dirDialog: true
     }
   },
   created: function () {
